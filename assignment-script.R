@@ -35,14 +35,14 @@ crossval <- data_training_clean[-in_train, ]
 
 # plot a correlation matrix
 correlation_matrix <- cor(training[, -length(training)])
-correlation_plot(correlation_matrix, order = "FPC", method = "circle", type = "lower", tl.cex = 0.8,  tl.col = rgb(0, 0, 0))
+corrplot(correlation_matrix, order = "FPC", method = "circle", type = "lower", tl.cex = 0.8,  tl.col = rgb(0, 0, 0))
 
 # fit a model to predict the classe using everything else as a predictor
 model <- randomForest(classe ~ ., data = training)
 
 # crossvalidate the model using the remaining 30% of data
 predict_cross_value <- predict(model, crossval)
-confusion_matrix(crossval$classe, predict_cross_value)
+confusionMatrix(crossval$classe, predict_cross_value)
 
 # apply the same treatment to the final testing data
 data_test <- read.csv("./data/pml-testing.csv", na.strings= c("NA",""," "))
