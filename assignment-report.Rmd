@@ -105,7 +105,7 @@ A separate data set was then loaded into R and cleaned in the same manner as bef
 
 ```{r}
 # apply the same treatment to the final testing data
-data_test <- read.csv("./data/pml-testing.csv", na.strings= c("NA",""," "))
+data_test <- read.csv("./data-source/pml-testing.csv", na.strings= c("NA",""," "))
 data_test_NAs <- apply(data_test, 2, function(x) {sum(is.na(x))})
 data_test_clean <- data_test[,which(data_test_NAs == 0)]
 data_test_clean <- data_test_clean[8:length(data_test_clean)]
