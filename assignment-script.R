@@ -52,14 +52,3 @@ data_test_clean <- data_test_clean[8:length(data_test_clean)]
 
 # predict the classes of the test set
 prediction_test <- predict(model, data_test_clean)
-
-# print output to files
-pml_write_files = function(x){
-  n = length(x)
-  for(i in 1:n){
-    filename = paste0("case_no_",i,".txt")
-    write.table(x[i],file=filename,quote=FALSE,row.names=FALSE,col.names=FALSE)
-  }
-}
-
-pml_write_files(predictFinal)
